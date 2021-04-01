@@ -1,16 +1,23 @@
 import $ from 'jquery';
 
-/** per frame callback for everything on a 2d canvas */
-type TickFn = (ctx: CanvasRenderingContext2D) => void;
+/** initial callback for creating engine */
+type InitFn = () => void;
+
+/** per frame callback for drawing on a 2d canvas (already cleared) */
+type DrawFn = (ctx: CanvasRenderingContext2D) => void;
+
+type InitOptions = {
+  init: InitFn;
+  draw: DrawFn;
+  canvasParentSelector?: string;
+};
 
 /** start the game engine */
-export default function init(parentSelector: string, tickFn: TickFn) {
-  $(() => initImpl($(parentSelector), tickFn));
-}
+export default (options: InitOptions) => $(() => initImpl(options));
 
-function initImpl(canvasParent: JQuery, tickFn: TickFn) {
+function initImpl(options: InitOptions) {
   const c = $('<canvas>') as JQuery<HTMLCanvasElement>;
-  canvasParent.append(c);
+  $(options.canvasParentSelector || 'body').append(c);
 
   fillToWindow(c);
   $(window).on('resize', () => fillToWindow(c));
@@ -20,9 +27,12 @@ function initImpl(canvasParent: JQuery, tickFn: TickFn) {
     if (!ctx) {
       throw new Error("couldn't get context");
     }
-    tickFn(ctx);
+    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+    options.draw(ctx);
     requestAnimationFrame(run);
   }
+
+  options.init();
   requestAnimationFrame(run);
 }
 

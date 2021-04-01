@@ -1,5 +1,7 @@
 import MyEngine from './myEngine';
 
+function init() {}
+
 function draw(ctx: CanvasRenderingContext2D) {
   ctx.strokeStyle = 'white';
   ctx.beginPath();
@@ -8,4 +10,4 @@ function draw(ctx: CanvasRenderingContext2D) {
   ctx.stroke();
 }
 
-MyEngine('#viewport', draw);
+MyEngine({ init, draw, canvasParentSelector: '#viewport' });
