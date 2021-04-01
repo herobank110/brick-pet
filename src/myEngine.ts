@@ -27,6 +27,6 @@ function initImpl(tickFn: TickFn) {
 }
 
 function fillToWindow(c: JQuery<HTMLCanvasElement>) {
-  const sz = { width: window.innerWidth, height: window.innerHeight };
+  const sz = { width: c.parent().width()!, height: c.parent().height()! };
   c.attr(sz).css(sz);
 }
