@@ -1,0 +1,21 @@
+{
+  "name": "brick-pet",
+  "version": "1.0.0",
+  "description": "Tiling brick based pattern generator",
+  "author": "David Kanekanian",
+  "license": "ISC",
+  "scripts": {
+    "start": "npm run parcel -- src/index.html",
+    "parcel": "parcel --dist-dir=build/dist --cache-dir=build/cache"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "2.0.0-beta.2",
+    "@types/jquery": "^3.5.5",
+    "parcel": "^2.0.0-beta.2"
+  },
+  "dependencies": {
+    "@flatten-js/core": "^1.2.22",
+    "jquery": "^3.6.0",
+    "vec2": "^1.6.1"
+  }
+}
