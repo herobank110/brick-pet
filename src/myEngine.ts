@@ -4,7 +4,7 @@ import $ from 'jquery';
 type TickFn = (ctx: CanvasRenderingContext2D) => void;
 
 /** start the game engine */
-export function init(parentSelector: string, tickFn: TickFn) {
+export default function init(parentSelector: string, tickFn: TickFn) {
   $(() => initImpl($(parentSelector), tickFn));
 }
 

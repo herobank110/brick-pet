@@ -1,4 +1,4 @@
-import { init } from './myEngine';
+import MyEngine from './myEngine';
 
 function draw(ctx: CanvasRenderingContext2D) {
   ctx.beginPath();
@@ -7,4 +7,4 @@ function draw(ctx: CanvasRenderingContext2D) {
   ctx.stroke();
 }
 
-init('#viewport', draw);
+MyEngine('#viewport', draw);
