@@ -7,4 +7,4 @@ function draw(ctx: CanvasRenderingContext2D) {
   ctx.stroke();
 }
 
-init(draw);
+init('#viewport', draw);

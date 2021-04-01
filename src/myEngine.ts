@@ -4,13 +4,13 @@ import $ from 'jquery';
 type TickFn = (ctx: CanvasRenderingContext2D) => void;
 
 /** start the game engine */
-export function init(tickFn: TickFn) {
-  $(() => initImpl(tickFn));
+export function init(parentSelector: string, tickFn: TickFn) {
+  $(() => initImpl($(parentSelector), tickFn));
 }
 
-function initImpl(tickFn: TickFn) {
+function initImpl(canvasParent: JQuery, tickFn: TickFn) {
   const c = $('<canvas>') as JQuery<HTMLCanvasElement>;
-  $('body').append(c);
+  canvasParent.append(c);
 
   fillToWindow(c);
   $(window).on('resize', () => fillToWindow(c));
