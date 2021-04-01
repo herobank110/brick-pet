@@ -1,8 +1,14 @@
 import MyEngine from './myEngine';
 
-function init() {}
+type State = {
+  a: string;
+};
 
-function draw(ctx: CanvasRenderingContext2D) {
+const init = (): State => ({
+  a: 'haha',
+});
+
+function draw(state: State, ctx: CanvasRenderingContext2D) {
   ctx.strokeStyle = 'white';
   ctx.beginPath();
   ctx.moveTo(10, 10);
