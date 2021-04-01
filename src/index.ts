@@ -4,12 +4,14 @@ type State = {
   a: string;
 };
 
-const init = (): State => ({
-  a: 'haha',
-});
+function init(): State {
+  return {
+    a: 'orange',
+  };
+}
 
 function draw(state: State, ctx: CanvasRenderingContext2D) {
-  ctx.strokeStyle = 'white';
+  ctx.strokeStyle = state.a;
   ctx.beginPath();
   ctx.moveTo(10, 10);
   ctx.lineTo(ctx.canvas.width - 10, ctx.canvas.height - 10);
