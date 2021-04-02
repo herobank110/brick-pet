@@ -44,6 +44,6 @@ function initImpl<State>(options: InitOptions<State>) {
 }
 
 function fillToWindow(c: JQuery<HTMLCanvasElement>) {
-  const sz = { width: c.parent().width()!, height: c.parent().height()! };
+  const sz = { width: c.parent().width()!, height: c.parent().height()!  };
   c.attr(sz).css(sz);
 }
