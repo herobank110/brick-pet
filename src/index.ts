@@ -2,24 +2,37 @@ import MyEngine from './myEngine';
 import { iota } from './utils';
 import $ from 'jquery';
 
+type UIColor = 'cyan' | 'indigo' | 'purple';
+
 type State = {
   a: string;
+  uiSelectedColor: UIColor;
 };
 
-const makePalette = (data: { n: number }) =>
+const makePalette = (data: { state: State; n: number }) =>
   $('<div>', { class: 'palette' }).append(
-    $('<h4>', { class: 'headline', text: 'Make a Selection' }),
+    $('<div>', { class: 'palette__header' }).append(
+      $('<h4>', { class: 'headline', text: 'Pieces' }),
+      $('<div>', { class: 'action-bar' }).append(
+        $('<button>', {
+          id: 'color-btn',
+          css: { background: data.state.uiSelectedColor },
+        }),
+      ),
+    ),
     $('<div>', { class: 'palette__grid' }).append(
       iota(data.n).map(i => $('<div>', { class: 'palette__cell' })),
     ),
   );
 
 function init(): State {
-  $('#palette').append(makePalette({ n: 10 }));
-
-  return {
+  const state: State = {
     a: 'orange',
+    uiSelectedColor: 'cyan',
   };
+
+  $('#palette').append(makePalette({ state, n: 10 }));
+  return state;
 }
 
 function draw(state: State, ctx: CanvasRenderingContext2D) {

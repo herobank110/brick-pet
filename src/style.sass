@@ -3,7 +3,7 @@
 body
   height: 100vh
   overflow: hidden
-  background: #292a2a
+  background: lighten(black, 10%)
 
 #palette
   max-height: 100vh
@@ -12,10 +12,14 @@ body
   display: flex
   flex-direction: column
   height: 100%
-  .headline
-    color: white
+  &__header
+    display: flex
+    // justify-content: space-between
+    column-gap: 1em
+    align-items: center
+    .headline
+      color: white
   &__grid
-    border: 1px solid white
     padding: .5em
     overflow-y: scroll
     padding-right: 1em
@@ -23,5 +27,13 @@ body
     grid-template-columns: repeat(3, 1fr)
     gap: 1em
   &__cell
-    border: 1px solid white
     height: 120px
+    border: 1px solid white
+    border-radius: 4px
+
+#color-btn
+  height: 1em
+  width: 1em
+  border: none
+  border-radius: 50%
+  box-shadow: 0 0 0 2px white
