@@ -3,4 +3,25 @@
 body
   height: 100vh
   overflow: hidden
-  background: black
+  background: #292a2a
+
+#palette
+  max-height: 100vh
+.palette
+  padding: 1em
+  display: flex
+  flex-direction: column
+  height: 100%
+  .headline
+    color: white
+  &__grid
+    border: 1px solid white
+    padding: .5em
+    overflow-y: scroll
+    padding-right: 1em
+    display: grid
+    grid-template-columns: repeat(3, 1fr)
+    gap: 1em
+  &__cell
+    border: 1px solid white
+    height: 120px
